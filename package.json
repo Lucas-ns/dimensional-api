@@ -1,0 +1,17 @@
+{
+  "name": "api-dashboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "keywords": [],
+  "author": "Lucas-ns",
+  "license": "ISC",
+  "description": "API for users Dashboard",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
