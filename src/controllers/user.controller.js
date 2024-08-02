@@ -1,7 +1,19 @@
-const sum = (req, res) => {
-  const sum = 100 + 1;
+const create = (req, res) => {
+  const { name, username, password, email } = req.body;
 
-  res.send({ sum: sum });
+  if (!username || !password) {
+    res.status(400).send({ message: "Username or Password invalid!" });
+  }
+
+  res.status(201).send({
+    message: "User created successfully!",
+    admin: {
+      name,
+      username,
+      password,
+      email,
+    },
+  });
 };
 
-module.exports = { sum };
+module.exports = { create };
