@@ -15,13 +15,10 @@ async function connectDatabase() {
   console.log("Waiting the connection to database");
 
   try {
-    await mongoose.connect(
-      "mongodb+srv://root:root@dimensional.hdr8jhe.mongodb.net/?retryWrites=true&w=majority&appName=dimensional",
-    );
-  } catch (error) {
-    console.log(error);
-  } finally {
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("MongoDB Atlas Connected");
+  } catch (err) {
+    console.log(err);
   }
 }
 
