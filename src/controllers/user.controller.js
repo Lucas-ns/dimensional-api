@@ -9,6 +9,12 @@ const create = async (req, res) => {
       res.status(400).send({ message: "Username or Password invalid!" });
     }
 
+    const userExists = await userService.findByUsername(username);
+
+    if (userExists !== null) {
+      return res.status(400).send({ message: "User already exists!" });
+    }
+
     const user = await userService.createService(req.body);
 
     if (!user) {
