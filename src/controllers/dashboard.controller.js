@@ -1,6 +1,6 @@
 const dashboard = (req, res) => {
   try {
-    res.send("Dashboard aqui");
+    res.sendStatus(200);
   } catch (err) {
     res.send({ message: err.message });
   }

@@ -1,4 +1,5 @@
 import userService from "../services/user.service.js";
+import bcrypt from "bcrypt";
 
 const create = async (req, res) => {
   try {
@@ -56,13 +57,15 @@ const update = async (req, res) => {
   try {
     const { name, username, password, email } = req.body;
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     if (!name && !username && !password && !email) {
       res.status(400).send({ message: "Submit at least one field for update" });
     }
 
     const { id, user } = req;
 
-    await userService.updateService(id, name, username, password, email);
+    await userService.updateService(id, name, username, hashedPassword, email);
 
     res.send({ message: "User successfully updated!" });
   } catch (err) {
